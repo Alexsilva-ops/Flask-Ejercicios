@@ -1,0 +1,5 @@
+.venv/
+HolaFlask/.venv/
+__pycache__/
+*.pyc
+.env

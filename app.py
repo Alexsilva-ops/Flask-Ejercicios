@@ -49,6 +49,49 @@ def arreglos(valores=0, columnas=0, filas=0):
 
     return f"<h1>El arreglo aleatorio es: {arreglo}</h1> <hr>"
 
+## Creamos otra ruta ruta relizamos el siguiente ejemplo
+## Ejercicios propuestos
+## 1.) Haga un programa que calcule la siguiente ecuación: Y = X * Z + Z + X
+@app.route("/ecuacion")
+@app.route("/ecuacion/<x>/<z>")
+def ecuacion(x=0, z=0):
+    x = float(x)
+    z = float(z)
+    y = x * z + z + x
+    return f"<h1>El resultado de Y es: {y}</h1> <hr>"
+
+## Creamos otra ruta ruta relizamos el siguiente ejemplo
+## 2.) Realizar programa que, capturado un número, realice la tabla de multiplicar de ese número hasta el 10.
+@app.route("/tabla")
+@app.route("/tabla/<int:numero>")
+def tabla(numero=0):
+    resultado = ""
+    for i in range(1, 11):
+        resultado += f"{numero} x {i} = {numero * i}<br>"
+    return f"<h1>Tabla del {numero}:</h1><h3>{resultado}</h3> <hr>"
+
+## Creamos otra ruta ruta relizamos el siguiente ejemplo
+## 3.) Realizar el programa que calcule las áreas de un círculo, cuadrado y triangulo
+import math
+@app.route("/areas")
+@app.route("/areas/<int:figura>/<v1>")
+@app.route("/areas/<int:figura>/<v1>/<v2>")
+def areas(figura=0, v1=0, v2=0):
+    v1 = float(v1)
+    v2 = float(v2)
+    if figura == 1:
+        area = math.pi * (v1 ** 2)
+        R = f"Círculo: {area}"
+    elif figura == 2:
+        area = v1 ** 2
+        R = f"Cuadrado: {area}"
+    elif figura == 3:
+        area = (v1 * v2) / 2
+        R = f"Triángulo: {area}"
+    else:
+        R = "Figura no válida"
+    return f"<h1>El área del {R}</h1> <hr>"
+
 if __name__ == '__main__':
     ## El valor True indica que la app se deja en modo debug
     app.run(debug=True)

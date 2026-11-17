@@ -16,6 +16,15 @@ function enviar() {
         if (v3 !== "") {
             url += '/' + v3;
         }
+    } else if (document.querySelector('#opcion5').checked) {
+        url = 'http://127.0.0.1:5000/ecuacion/' + v1 + '/' + v2;
+    } else if (document.querySelector('#opcion6').checked) {
+        url = 'http://127.0.0.1:5000/tabla/' + v1;
+    } else if (document.querySelector('#opcion7').checked) {
+        url = 'http://127.0.0.1:5000/areas/' + v1 + '/' + v2;
+        if (v3 !== "") {
+            url += '/' + v3;
+            }
     } else {
         swal("Mensaje", "Seleccione una opción", "warning");
         return;
@@ -79,4 +88,19 @@ function opcion3() {
 // Opción para arreglos
 function opcion4() {
     configurar(true, true, true, "Valores permitidos", "Columnas", "Filas");
+}
+
+// Opción para ecuación
+function opcion5() {
+    configurar(true, true, false, "Valor X", "Valor Z", "");
+}
+
+// Opción para tabla de multiplicar
+function opcion6() {
+    configurar(true, false, false, "Número", "", "");
+}
+
+// Opción para áreas
+function opcion7() {
+    configurar(true, true, true, "1:Círculo 2:Cuadrado 3:Triángulo", "Radio / Lado / Base", "Altura (Triángulo)");
 }
